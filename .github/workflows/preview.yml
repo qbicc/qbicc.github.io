@@ -3,6 +3,9 @@ name: Roq Site Preview
 on:
   pull_request:
     branches: [ main ]
+  push:
+    branches-ignore: [ main ]   # Lets a fork get a preview from a plain branch push, without a PR
+  workflow_dispatch:
 
 permissions:
   contents: read
