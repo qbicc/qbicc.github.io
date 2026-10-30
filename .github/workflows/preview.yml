@@ -1,0 +1,36 @@
+name: Roq Site Preview
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Generate Roq Site
+        uses: quarkiverse/quarkus-roq@v1
+        with:
+          github-pages: 'false'   # Only build, don't configure or upload for GitHub Pages
+          site-url: /
+      - name: Upload preview
+        uses: actions/upload-artifact@v7
+        with:
+          name: site-preview
+          path: target/roq
+          if-no-files-found: error
+          retention-days: 14
+      - name: Explain how to view the preview
+        run: |
+          {
+            echo "### Site preview"
+            echo "Download the \`site-preview\` artifact from this run, unzip it, and serve it from a web server, e.g.:"
+            echo '```'
+            echo "cd site-preview && python3 -m http.server 8000"
+            echo '```'
+            echo "then open http://localhost:8000/. Opening the files directly will not work because links are root-relative."
+          } >> "$GITHUB_STEP_SUMMARY"
