@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Generate Roq Site
-        uses: quarkiverse/quarkus-roq@v1
+        uses: quarkiverse/quarkus-roq@2.2.0
         with:
           github-pages: 'false'   # Only build, don't configure or upload for GitHub Pages
           site-url: /
