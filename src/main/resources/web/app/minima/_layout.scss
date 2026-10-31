@@ -173,6 +173,46 @@
 
 
 /**
+ * Commonhaus Foundation footer
+ */
+.commonhaus-footer {
+  background-color: $grey-color-dark;
+  color: $grey-color-light;
+  padding: $spacing-unit 0;
+  @include relative-font-size(0.875);
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+
+    &:visited {
+      color: #fff;
+    }
+
+    &:hover {
+      color: $grey-color-light;
+    }
+  }
+
+  .commonhaus-logo {
+    display: inline-block;
+    margin-bottom: $spacing-unit * 0.5;
+
+    img {
+      display: block;
+      height: auto;
+      width: 267px;
+    }
+  }
+
+  .commonhaus-legal {
+    margin-bottom: 0;
+  }
+}
+
+
+
+/**
  * Page content
  */
 .page-content {
